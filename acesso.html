@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Plano Alimentar</title>
+
+    <meta property="og:title" content="🍏 Seu Plano Alimentar está pronto!">
+    
+    <meta property="og:description" content="Preparei seu planejamento com foco nos seus objetivos. Clique para acessar.">
+    
+    <meta property="og:image" content="https://seusite.com/imagens/capa-nutri-profissional.jpg">
+    
+    <meta property="og:type" content="website">
+
+    <style>
+        /* Estilo "Mobile First" simples e elegante */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 { color: #2c3e50; margin-bottom: 10px; font-size: 22px; }
+        p { color: #7f8c8d; margin-bottom: 30px; }
+        
+        .btn-acesso {
+            background-color: #27ae60; /* Verde "Saúde" */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: block;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+        .btn-acesso:active { transform: scale(0.98); }
+        
+        .logo { max-width: 100px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Olá!</h1>
+        <p>Seu planejamento alimentar já está disponível na plataforma.</p>
+        
+        <a id="linkDieta" href="#" class="btn-acesso">
+            Ver Minha Dieta ➔
+        </a>
+    </div>
+
+    <script>
+        // LÓGICA DE PROGRAMADOR:
+        // Pega o ID da dieta da URL (ex: seusite.com/acesso.html?id=123)
+        // E injeta no botão.
+        
+        const params = new URLSearchParams(window.location.search);
+        const dietaId = params.get('id'); // Pega o parametro 'id'
+        
+        if (dietaId) {
+            // Monta o link final do seu app
+            const linkFinal = `https://seu-app-de-dieta.com/visualizar/${dietaId}`;
+            document.getElementById('linkDieta').href = linkFinal;
+        } else {
+            // Fallback se não tiver ID
+            document.getElementById('linkDieta').style.display = 'none';
+            document.querySelector('p').innerText = "Link inválido. Peça novamente ao seu Nutricionista.";
+        }
+    </script>
+</body>
+</html>
